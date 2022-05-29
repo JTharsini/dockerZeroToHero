@@ -1,0 +1,46 @@
+docker exec -it <container name/id> /bin/bash
+docker network create mongo-network
+docker network ls
+docker ps
+docker ps -a
+docker images
+docker run -d \
+	-p 27017:27017 \
+	--net mongo-network \
+	--name mongodb \
+	-e MONGO_INITDB_ROOT_USERNAME=admin \
+	-e MONGO_INITDB_ROOT_PASSWORD=password \
+	mongo
+docker run -d \
+	-p 8081:8081 \
+	--net mongo-network \
+	--name mongo-express \
+	-e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+	-e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+	-e ME_CONFIG_MONGODB_SERVER= mongodb \
+	mongo-express
+docker rm <container name/id>
+docker start <container name/id>
+docker stop <container name/id>
+docker logs <container name/id>
+docker logs <container name/id> | tail
+docker logs <container name/id> -f
+npm install
+C:\Users\asus\AppData\Roaming\nvm\v16.14.0\node server.js
+Docker compose : to combine docker commands (services in same compose file will be added to same network)
+docker compose -f mongo-docker-compose.yaml up
+docker compose -f mongo-docker-compose.yaml down
+build image: docker build -t my-app:1.0 .
+docker rmi <image name/id>
+docker exec -it priceless_ramanujan /bin/sh
+
+
+
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+aws configure
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2t0k6p2
+docker tag my-app:1.0 public.ecr.aws/g2t0k6p2/my-app:latest
+docker push public.ecr.aws/g2t0k6p2/my-app:latest
+registryDomain/imageName:tag (usually : docker.io/library/mongo:4.2
+
+
